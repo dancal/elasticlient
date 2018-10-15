@@ -179,7 +179,7 @@ class ElasticlientTest: public ::testing::Test {
     }
 };
 
-
+/*
 TEST_F(ElasticlientTest, hostsFailed) {
     Client elasticClient({"http://fake.fake123:45100/", "http://fake.fake123:45101/"});
     ASSERT_THROW(elasticClient.search("fake", "fake", "{}"), ConnectionException);
@@ -222,8 +222,9 @@ TEST_F(ElasticlientTest, remove) {
     ASSERT_EQ(200, r.status_code);
     ASSERT_EQ("REMOVE_OK", r.text);
 }
+*/
 
-
+/*
 TEST_F(ElasticlientTest, bulkInternal) {
     // check if control field is generated correctly
     ASSERT_EQ(
@@ -285,7 +286,7 @@ TEST_F(ElasticlientTest, scroll) {
     scrollInstance.clear();
     ASSERT_FALSE(scrollInstance.next(hits));
 }
-
+*/
 
 }  // namespace elasticlient
 

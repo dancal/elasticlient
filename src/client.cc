@@ -32,7 +32,7 @@ void fillIndexAndTypeInUrlPath(
 {
     if (indexNameNotEmpty && indexName.empty()) {
         throw std::runtime_error("Argument indexName can not be empty.");
-    } else if (!indexName.empty()) {
+    } else if (!indexName.empty() && indexName != "/" ) {
         urlPath << indexName << "/";
     }
     if (docTypeNotEmpty && docType.empty()) {
@@ -199,6 +199,14 @@ cpr::Response Client::index(const std::string &indexName,
     return std::move(impl->performRequest(HTTPMethod::POST, urlPath.str(), body));
 }
 
+cpr::Response Client::index_exists(const std::string &indexName,
+                            const std::string &routing)
+{
+    std::ostringstream urlPath;
+    fillIndexAndTypeInUrlPath(indexName, true, "", true, urlPath);
+    fillRoutingInUrlPath(routing, urlPath);
+    return std::move(impl->performRequest(HTTPMethod::HEAD, urlPath.str()));
+}
 
 cpr::Response Client::remove(const std::string &indexName,
                              const std::string &docType,

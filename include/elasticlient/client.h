@@ -121,6 +121,9 @@ class Client {
                         const std::string &body,
                         const std::string &routing = std::string());
 
+    cpr::Response index_exists(const std::string &indexName,
+                        const std::string &routing = std::string());
+
     /**
      * Delete document with specified id from cluster. Throws exception if all nodes
      * has failed to respond.

@@ -2,7 +2,8 @@ include_directories(${ELASTICLIENT_INCLUDE_DIRS}
                     ${CPR_INCLUDE_DIRS}
                     ${JSONCPP_INCLUDE_DIRS})
 
-add_library(${ELASTICLIENT_LIBRARY} SHARED
+#add_library(${ELASTICLIENT_LIBRARY} SHARED
+add_library(${ELASTICLIENT_LIBRARY} STATIC
             client.cc
             bulk.cc
             scroll.cc
@@ -22,5 +23,4 @@ set_target_properties(${ELASTICLIENT_LIBRARY}
                           VERSION "${ELASTICLIENT_VERSION_MAJOR}.${ELASTICLIENT_VERSION_MINOR}.${ELASTICLIENT_VERSION_PATCH}"
                           SOVERSION ${ELASTICLIENT_VERSION_MAJOR})
 
-install(TARGETS ${ELASTICLIENT_LIBRARY} LIBRARY
-        DESTINATION lib)
+#install(TARGETS ${ELASTICLIENT_LIBRARY} LIBRARY DESTINATION lib)
